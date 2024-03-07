@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		/* Add some color to the form elements */
+input[type="text"],
+input[type="password"] {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #222121;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  padding: 14px 20px;
+  margin: 10px 0;
+  width:140px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Add some styles to the labels */
+label {
+  margin-top: 20px;
+  display: block;
+}
+
+/* Style the form */
+form {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f2f2f2;
+  border-radius: 10px;
+}
+img{
+  height:50px;
+}
+
+	</style>
+</head>
+<body>
+	<h1>edit</h1>
+	<form action="/user/<%= user.id %>?_method=PUT" method="POST">
+
+		<label for="username"></label>		<br>
+		<!-- for= username so id will be username -->
+		<input type="text" placeholder="Ener your name" name="username" id="username" value="<%= user.username %>"><br>
+		<label for="password"></label><br>
+		<input type="text" placeholder="Ener your password" name="password" value="<%= user.password %>" id="password"><br>
+		<label for="city"></label><br>
+		<input type="text" placeholder="Enter the Place" name="city" value="<%= user.city %>" id="city"><br><br>
+    <label for="image">Update Profile Image (URL)</label><br>
+<input type="text" placeholder="Enter image URL" name="image" id="image" value="<%= user.image %>"><br>
+    
+   
+		<label for="submit"></label>
+
+		<input type="submit" name="submit" id="submit">
+	</form>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!-- users.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+       /* Styling for User List */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.box {
+  width: 200px;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+a {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #007bff;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+a:hover {
+  background-color: #0056b3;
+}
+
+button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #c82333;
+}
+img{
+  height: 100px;
+}
+
+.ab{
+  margin-top: 20px;;
+  margin-left: 40px;;
+  width:150px;
+  height:18px;
+}
+    </style>
+</head>
+<body>
+    <a class="ab" href="/user/new">Create new user</a>
+    <div class="container">
+        <% for (let user of users) { %>
+            <div class="box">
+                <h2><%= user.username %></h2>
+                <p><%= user.password %></p>
+                <img src="<%= user.image %>">
+                <a href="/user/<%= user.id %>">SHOW</a>
+                <a href="/user/<%= user.id %>/edit">EDIT</a>
+
+
+                <form method="post" action="/users/<%= user.id %>?_method=DELETE">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
